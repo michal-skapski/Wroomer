@@ -17,7 +17,7 @@ public class Gun : MonoBehaviour
     private float mouseY;
     private int _limit = 60;
     void Update()
-    {
+    {   //TEST
         if (Input.GetKey(KeyCode.Space) && Time.time >= _nextTimeToFire)
         {
             _nextTimeToFire = Time.time + _timeMeasure / _fireRate;
