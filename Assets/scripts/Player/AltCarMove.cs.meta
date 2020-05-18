@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: f08a2e46f3273a249bed483035a19273
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _wheelz: {instanceID: 0}
+  - _secWheelz: {instanceID: 0}
+  - _car: {instanceID: 0}
+  - _wheelTrail: {instanceID: 0}
+  - _wheelTrail_2: {instanceID: 0}
+  - _rayEmmiter: {instanceID: 0}
+  - _tutorialPanel: {instanceID: 0}
+  - _leftJoystick: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
