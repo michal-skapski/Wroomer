@@ -1,16 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using TMPro.Examples;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Scoreboard : MonoBehaviour
 {
-    private int _gameNumber=3;
+    public int gameNumber;
     public GameObject[] _posNumberArray;
     public GameObject[] _nameArray;
     public GameObject[] _scoreArray;
+    public TextMeshProUGUI[] nameArrayText;
+    private NameAssignerScene _name;
+
 
     private void Awake()
     {
+        
+        _name.GetComponent<NameAssignerScene>();
         _posNumberArray[0].SetActive(false);
         _posNumberArray[1].SetActive(false);
         _posNumberArray[2].SetActive(false);
@@ -33,7 +41,7 @@ public class Scoreboard : MonoBehaviour
 
     public void AddingNewScore()
     {
-        switch (_gameNumber)
+        switch (gameNumber)
         {
             case 1:
                 _posNumberArray[0].SetActive(true);
@@ -113,10 +121,15 @@ public class Scoreboard : MonoBehaviour
         }
     }
 
+    public void AddingValuesToScore()
+    {
+        nameArrayText[gameNumber].text = _name.userNewName.ToString();
+    }
 
 
     private void Update()
     {
         AddingNewScore();
+        AddingValuesToScore();
     }
 }

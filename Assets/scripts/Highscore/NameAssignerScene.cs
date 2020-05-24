@@ -5,8 +5,14 @@ using UnityEngine.SceneManagement;
 public class NameAssignerScene : MonoBehaviour
 {
     public TMP_InputField userNameBox;
-    public string userNewName;
+    public string[] userNewName;
     private string _menuScene = "Menu";
+    private Scoreboard _sb;
+    private void Awake()
+    {
+        _sb.GetComponent<Scoreboard>();
+    }
+
 
     private void Start()
     {
@@ -19,10 +25,20 @@ public class NameAssignerScene : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        ClickSaveButton(); 
+        for (int i = 0; i < _sb.gameNumber; i++)
+        {
+            PlayerPrefs.SetString(userNewName[_sb.gameNumber], userNameBox.text);
+        }
+    }
+
     public void ClickSaveButton()
     {
-        PlayerPrefs.SetString(userNewName, userNameBox.text);
         SceneManager.LoadScene(_menuScene);
-        Debug.Log("Your name is: " + PlayerPrefs.GetString(userNewName));
+
+;
+        //Debug.Log("Your name is: " + PlayerPrefs.GetString(userNewName));
     }
 }

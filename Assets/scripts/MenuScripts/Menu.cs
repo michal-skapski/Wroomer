@@ -25,7 +25,7 @@ public class Menu : MonoBehaviour
     [SerializeField] private bool _inArena = false;
 
     private string _menuScene = "Menu";
-    private string _prototypeScene = "Prototype_01";
+    private string _gameScene = "Prototype_01";
     private void Start()
     {
         AssignMenu();
@@ -54,7 +54,7 @@ public class Menu : MonoBehaviour
     }
     public void PlayGame()
     {
-        SceneManager.LoadScene(_prototypeScene);
+        SceneManager.LoadScene(_gameScene);
     }
     public void ExitGame()
     {
