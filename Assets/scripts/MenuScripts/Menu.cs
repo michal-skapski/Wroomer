@@ -23,6 +23,9 @@ public class Menu : MonoBehaviour
     [SerializeField] private GameObject _sndWave;
     [SerializeField] private GameObject _trdWave;
     [SerializeField] private bool _inArena = false;
+
+    private string _menuScene = "Menu";
+    private string _gameScene = "Prototype_01";
     private void Start()
     {
         AssignMenu();
@@ -47,11 +50,11 @@ public class Menu : MonoBehaviour
     //add listener onclick
     public void GoToMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(_menuScene);
     }
     public void PlayGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(_gameScene);
     }
     public void ExitGame()
     {
