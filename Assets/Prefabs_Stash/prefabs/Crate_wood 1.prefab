@@ -84,6 +84,7 @@ MonoBehaviour:
   _deathlyNumber: 0
   _timeToDestroy: 0.5
   _player: 0
+  _civil: 0
   _crate: 1
   _smoke: {fileID: 0}
   _expl: {fileID: 6105370392234566822}
@@ -170,6 +171,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: crate_wooden
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 894ebeb3ac8ed9b4596e98c64f06d988,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 894ebeb3ac8ed9b4596e98c64f06d988, type: 3}
@@ -301,6 +307,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ExplChest
+      objectReference: {fileID: 0}
+    - target: {fileID: 1845277422518273918, guid: d99577aa1b960ee4d9e3ebeb7b9dfeab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3267827050072740729, guid: d99577aa1b960ee4d9e3ebeb7b9dfeab, type: 3}

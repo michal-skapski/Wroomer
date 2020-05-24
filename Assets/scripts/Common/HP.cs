@@ -16,6 +16,7 @@ public class HP : MonoBehaviour
     [SerializeField] private bool _crate = false;
     private float _hp;
     private int _divisionOfHP = 2;
+    [SerializeField] private int _divisionOfHP4Run = 2;
     [SerializeField] private ParticleSystem _smoke;
     [SerializeField] private ParticleSystem _expl;
     [SerializeField] private GameObject _shield;
@@ -38,32 +39,43 @@ public class HP : MonoBehaviour
             _hp -= damage;
             _partNumber--;
             TakeParts();
-            if (_hp <= _deathlyNumber) // _deathlyNumber = 0
+            CheckHealth();
+            if(_civil == false && _player == false)
             {
-                _shell.SetActive(false);
-                _expl.Play();
-                if (_player == true) //either is player
+                if(_hp < _life / _divisionOfHP4Run)
                 {
-                    _car.Die();
-                }
-                else if (_player == false) // or not, and grabs Enemy AI, there will be correction here, further down the road, when teams are introduced
-                {
-                    if (_civil == true)
-                    {
-                        _civilian.Die();
-                    }
-                    else if (_civil == false)
-                    {
-                        _carEn.Die(); // enemy
-                    }
-                }
-                Destroy(_thisAI, _timeToDestroy);
+                    _carEn.StartFleeing(); // makes enemy wanting to try to hide himself from you
+                }          
             }
         }
         else if (_crate == true)
         {
             _shell.SetActive(false);
             _expl.Play();
+            Destroy(_thisAI, _timeToDestroy);
+        }
+    }
+    private void CheckHealth()
+    {
+        if (_hp <= _deathlyNumber) // _deathlyNumber = 0
+        {
+            _shell.SetActive(false);
+            _expl.Play();
+            if (_player == true) //either is player
+            {
+                _car.Die();
+            }
+            else if (_player == false) // or not, and grabs Enemy AI, there will be correction here, further down the road, when teams are introduced
+            {
+                if (_civil == true)
+                {
+                    _civilian.Die();
+                }
+                else if (_civil == false)
+                {
+                    _carEn.Die(); // enemy
+                }
+            }
             Destroy(_thisAI, _timeToDestroy);
         }
     }
