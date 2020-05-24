@@ -37,7 +37,7 @@ public class TPSCam : MonoBehaviour
             if(_cameraMov == false)
             {
                 //Cursor.lockState = CursorLockMode.Locked;
-                _target.transform.rotation = _car.transform.rotation;
+               // _target.transform.rotation = _car.transform.rotation;
             }
         }
     }
@@ -56,6 +56,22 @@ public class TPSCam : MonoBehaviour
         _target.rotation = Quaternion.Euler(mouseY, mouseX, _zeroVal);
         Vector2 movement = _camJoystick.GetTouchPosition;
         _movement = new Vector3(movement.x, _zeroVal, movement.y);
+        JoyTurnVal();
+        JoyZFix();
+    }
+    void JoyZFix()
+    {
+        if (_movement.z != _zeroVal)
+        {
+            _cameraMov = true;
+        }
+        else
+        {
+            _cameraMov = false;
+        }
+    }
+    void JoyTurnVal()
+    {
         if (_movement.z > _zeroVal)
         {
             mouseY -= _rotationSpeed * _joyRotFix;// * Time.deltaTime;
@@ -71,14 +87,6 @@ public class TPSCam : MonoBehaviour
         if (_movement.x < -_joyTurnVal)
         {
             mouseX -= _rotationSpeed * _joyRotFix;// * Time.deltaTime;
-        } 
-        if(_movement.z != _zeroVal)
-        {
-            _cameraMov = true;
-        }
-        else
-        {
-            _cameraMov = false;
         }
     }
 }

@@ -234,6 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f15b9a68f1170b4cbeaed9256c6ccb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _frontTurn: {fileID: 0}
   _prefab: {fileID: 3999081930942244916, guid: 695347893ad13cc4a8e1547affb6c532, type: 3}
   _speed: 10
   _fireRate: 1
@@ -241,6 +242,7 @@ MonoBehaviour:
   _roofWeapon: 0
   _tpsCam: {fileID: 0}
   _gunRotate: {fileID: 150961412909957218}
+  _autoGunControl: 0
 --- !u!1 &5688826691051567634
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,7 +254,7 @@ GameObject:
   - component: {fileID: 5688826691051567633}
   - component: {fileID: 5688826691051567632}
   - component: {fileID: 5268427727341363973}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: CarHP
   m_TagString: Untagged
   m_Icon: {fileID: 0}

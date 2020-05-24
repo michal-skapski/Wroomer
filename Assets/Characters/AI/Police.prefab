@@ -211,6 +211,7 @@ MonoBehaviour:
   _roofWeapon: 0
   _tpsCam: {fileID: 0}
   _gunRotate: {fileID: 0}
+  _autoGunControl: 0
 --- !u!1 &5523303419598078030
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,7 +253,7 @@ GameObject:
   - component: {fileID: 5688826691051567633}
   - component: {fileID: 5688826691051567632}
   - component: {fileID: 5268427727341363973}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: CarHP
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -5,12 +5,13 @@ using UnityEngine;
 public class CollHit : MonoBehaviour
 {
     [SerializeField] private int _damage = 200;
+    [SerializeField] private bool _myTrail = false;
     void OnParticleCollision(GameObject other)
     {
-        AIEnemy player = other.GetComponent<AIEnemy>();
+        HP player = other.GetComponent<HP>();
         if (player != null)
         {
-            player.DeathByTrail(_damage);
+            player.TakeDamage(_damage, _myTrail);
         }
     }
 }

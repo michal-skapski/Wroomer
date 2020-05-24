@@ -4929,3 +4929,4 @@ MonoBehaviour:
   speed: 25
   damage: 15
   _burst: {fileID: 1845277422518273918, guid: 07c53e7b76576ca40be87dbbc4f90748, type: 3}
+  _myBullet: 1

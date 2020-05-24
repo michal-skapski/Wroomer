@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+    public static Transform _weapTarget;
+    [SerializeField] private Transform _frontTurn;
     [SerializeField] private GameObject _prefab;
     [SerializeField] private int _speed = 0;
     [SerializeField] private float _fireRate = 15;
@@ -16,6 +18,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private Transform _gunRotate;
     private float mouseY;
     private int _limit = 60;
+    [SerializeField] private bool _autoGunControl = false;
     void Update()
     {   //TEST
         if (Input.GetKey(KeyCode.Space) && Time.time >= _nextTimeToFire)
@@ -23,10 +26,17 @@ public class Gun : MonoBehaviour
             _nextTimeToFire = Time.time + _timeMeasure / _fireRate;
             Shoot();
         }
-        if(_roofWeapon == true && _gunRotate != null)
+        if (_autoGunControl == false)
         {
-            mouseY = Mathf.Clamp(mouseY, -_limit, _limit);
-            _gunRotate.transform.rotation = _tpsCam.transform.rotation;
+            if (_roofWeapon == true && _gunRotate != null)
+            {
+                mouseY = Mathf.Clamp(mouseY, -_limit, _limit);
+                _gunRotate.transform.rotation = _tpsCam.transform.rotation;
+            }
+        }
+        else if (_autoGunControl == true)
+        {
+            AutoAim();
         }
     }
     public void JoystickShot()
@@ -35,6 +45,17 @@ public class Gun : MonoBehaviour
         {
             _nextTimeToFire = Time.time + _timeMeasure / _fireRate;
             Shoot();
+        }
+    }
+    void AutoAim()
+    {
+        if (_weapTarget != null)
+        {
+            _gunRotate.LookAt(_weapTarget);
+        }
+        else
+        {
+            _gunRotate.transform.rotation = _frontTurn.transform.rotation;
         }
     }
     void Shoot()
@@ -47,5 +68,9 @@ public class Gun : MonoBehaviour
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
             rb.velocity = _gun.transform.forward * _speed;
         }
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        _weapTarget = other.transform;
     }
 }

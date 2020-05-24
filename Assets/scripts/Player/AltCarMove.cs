@@ -122,13 +122,21 @@ public class AltCarMove : MonoBehaviour
                 GoingStraight(-_movSpeed);
             }
         }
-        if (_movement.x > _joyTurnVal) //rotates wheels
+        if (_movement.x > _joyTurnVal && _movement.z > _zeroVal) //rotates wheels
         {
             RightTurn();
         }
-        if (_movement.x < -_joyTurnVal)
+        if (_movement.x < -_joyTurnVal && _movement.z > _zeroVal)
         {
             LeftTurn();
+        }
+        if (_movement.x > _joyTurnVal && _movement.z < _zeroVal) //rotates wheels
+        {
+            LeftTurn();
+        }
+        if (_movement.x < -_joyTurnVal && _movement.z < _zeroVal)
+        {
+            RightTurn();
         }
     }
     void GoingStraight(float _internalSpeed)

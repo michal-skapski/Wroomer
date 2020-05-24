@@ -5,12 +5,13 @@ using UnityEngine;
 public class Explosion : MonoBehaviour
 {
     public int damage = 2;
+    [SerializeField] private bool _playerMade = true;
     void OnTriggerEnter(Collider other)
     {
         HP player = other.GetComponent<HP>();
         if (player != null)
         {
-            player.TakeDamage(damage);
+            player.TakeDamage(damage, _playerMade);
         }
     }
 }

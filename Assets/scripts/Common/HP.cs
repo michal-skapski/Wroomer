@@ -32,27 +32,30 @@ public class HP : MonoBehaviour
         _car = _thisAI.GetComponent<AltCarMove>();
         _civilian = _thisAI.GetComponent<LilHum>();
     }
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, bool allegiance)
     {
-        if (_shielded == false && _crate == false)
-        {
-            _hp -= damage;
-            _partNumber--;
-            TakeParts();
-            CheckHealth();
-            if(_civil == false && _player == false)
+        if (allegiance == true && _player == false || allegiance == false && _player == true)
+        { //checks if the bullet came from player or not to prevent friendly fire
+            if (_shielded == false && _crate == false)
             {
-                if(_hp < _life / _divisionOfHP4Run)
+                _hp -= damage;
+                _partNumber--;
+                TakeParts();
+                CheckHealth();
+                if (_civil == false && _player == false)
                 {
-                    _carEn.StartFleeing(); // makes enemy wanting to try to hide himself from you
-                }          
+                    if (_hp < _life / _divisionOfHP4Run)
+                    {
+                        _carEn.StartFleeing(); // makes enemy wanting to try to hide himself from you
+                    }
+                }
             }
-        }
-        else if (_crate == true)
-        {
-            _shell.SetActive(false);
-            _expl.Play();
-            Destroy(_thisAI, _timeToDestroy);
+            else if (_crate == true)
+            {
+                _shell.SetActive(false);
+                _expl.Play();
+                Destroy(_thisAI, _timeToDestroy);
+            }
         }
     }
     private void CheckHealth()

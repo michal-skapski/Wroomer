@@ -8,6 +8,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] private int damage = 2;
     private int _zeroVal = 0;
     [SerializeField] private GameObject _burst;
+    [SerializeField] private bool _myBullet = false;
     void Update()
     {
         transform.Translate(_zeroVal, _zeroVal, speed * Time.deltaTime); 
@@ -20,7 +21,7 @@ public class Projectile : MonoBehaviour
         HP player = other.GetComponent<HP>();
         if (player != null)
         {
-            player.TakeDamage(damage);
+            player.TakeDamage(damage, _myBullet);
         }
         Destroy(this.gameObject);
     }

@@ -24,6 +24,7 @@ public class AIEnemy : MonoBehaviour
     private bool _destroyed = false;
     public bool seesCar = false;
     private bool _flee = false;
+    private bool _isPlayer = false;
     //rayDetectingPart
     [SerializeField] private GameObject _rayEmmiter;
     public float _interactDist = 0.1f;
@@ -177,7 +178,7 @@ public class AIEnemy : MonoBehaviour
     }
     public void DeathByTrail(int dmg)
     {
-        _myHp.TakeDamage(dmg);
+        _myHp.TakeDamage(dmg, _isPlayer);
     }
     private void OnTriggerEnter(Collider other)
     {
