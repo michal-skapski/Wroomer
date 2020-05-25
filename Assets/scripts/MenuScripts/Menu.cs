@@ -16,14 +16,16 @@ public class Menu : MonoBehaviour
     private float _remainingTime;
     private Animator anim;
     [SerializeField] private TMP_Text _scoreCount;
-    private int _score;
+    private int _score; 
+    static public int score;
+    private int _zeroVal = 0;
     private float _baseTimeMeasure = 1f;
     [SerializeField] private float _secondWave;
     [SerializeField] private float _thirdWave;
     [SerializeField] private GameObject _sndWave;
     [SerializeField] private GameObject _trdWave;
     [SerializeField] private bool _inArena = false;
-
+    //menuScenes
     private string _menuScene = "Menu";
     private string _gameScene = "Prototype_01";
     private void Start()
@@ -31,6 +33,8 @@ public class Menu : MonoBehaviour
         AssignMenu();
         if (_inArena == true)
         {
+            _score = _zeroVal;
+            score = _score;
             _thisStaticMenu = _thisMenu;
             _remainingTime = _timer;
             StartCoroutine("ArenaMatchStart");
@@ -68,6 +72,7 @@ public class Menu : MonoBehaviour
     public void AddScore(int points)
     {
         _score += points;
+        score = _score;
         _scoreCount.text = "" + _score;
     }
     IEnumerator SecondWave()

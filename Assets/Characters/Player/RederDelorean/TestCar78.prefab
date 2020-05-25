@@ -12562,7 +12562,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4110751217224408326}
-  m_LocalRotation: {x: 0.1891075, y: 0.000000021612504, z: -0.000000004162187, w: 0.9819564}
+  m_LocalRotation: {x: 0.18910752, y: 0.000000013959963, z: -0.0000000026884428, w: 0.9819564}
   m_LocalPosition: {x: 0, y: 3.5, z: -7.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -12635,7 +12635,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotationSpeed: 1
   _target: {fileID: 4110751217208045908}
-  _joystickControl: 1
+  _joystickControl: 0
   _camJoystick: {fileID: 3139740354869229043}
   _car: {fileID: 4110751217839180569}
 --- !u!114 &2990211620684259057
@@ -12793,7 +12793,7 @@ MonoBehaviour:
   _tutorialPanel: {fileID: 2597914624274984036}
   _destroyed: 0
   _hidden: 0
-  _joystickControlled: 1
+  _joystickControlled: 0
   _leftJoystick: {fileID: 4740545869900178580}
   _deadlyTrail: {fileID: 4808652161580384023}
 --- !u!114 &4110751217839180574
@@ -12862,7 +12862,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4580138428419125933}
-  m_LocalRotation: {x: 0.1891075, y: 0.000000021612504, z: -0.000000004162187, w: 0.9819564}
+  m_LocalRotation: {x: 0.18910752, y: 0.000000013959963, z: -0.0000000026884428, w: 0.9819564}
   m_LocalPosition: {x: 0, y: 3.5, z: -7.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -21751,12 +21751,12 @@ PrefabInstance:
     - target: {fileID: 224000011143561908, guid: c3f341c6e5b047e4e8e77a7f098cbbcf,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 125
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 224000011143561908, guid: c3f341c6e5b047e4e8e77a7f098cbbcf,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 150
+      value: 185
       objectReference: {fileID: 0}
     - target: {fileID: 224000011143561908, guid: c3f341c6e5b047e4e8e77a7f098cbbcf,
         type: 3}
@@ -21801,12 +21801,12 @@ PrefabInstance:
     - target: {fileID: 224000011143561908, guid: c3f341c6e5b047e4e8e77a7f098cbbcf,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 224000011143561908, guid: c3f341c6e5b047e4e8e77a7f098cbbcf,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 224000011143561908, guid: c3f341c6e5b047e4e8e77a7f098cbbcf,
         type: 3}

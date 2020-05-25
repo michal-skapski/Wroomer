@@ -1,44 +1,37 @@
 ﻿using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Globalization;
+using System.Collections.Generic;
 
 public class NameAssignerScene : MonoBehaviour
 {
     public TMP_InputField userNameBox;
-    public string[] userNewName;
+    public static Text playerName;
+    public List <string> userNewName;
     private string _menuScene = "Menu";
+    [SerializeField] private GameObject _scoreBoard;
     private Scoreboard _sb;
     private void Awake()
     {
-        _sb.GetComponent<Scoreboard>();
-    }
-
-
-    private void Start()
-    {
+        _sb = _scoreBoard.GetComponent<Scoreboard>();
         GetName();
     }
-
-
-    public void GetName()
-    {
-
-    }
-
     private void Update()
     {
-        ClickSaveButton(); 
-        for (int i = 0; i < _sb.gameNumber; i++)
+        for (int i = 0; i < _sb.gameNum; i++)
         {
-            PlayerPrefs.SetString(userNewName[_sb.gameNumber], userNameBox.text);
+          //  PlayerPrefs.SetString(userNewName[_sb.gameNum], userNameBox.text);
         }
     }
-
+    public void GetName()
+    {
+        //add code
+    }
     public void ClickSaveButton()
     {
         SceneManager.LoadScene(_menuScene);
-
-;
         //Debug.Log("Your name is: " + PlayerPrefs.GetString(userNewName));
     }
 }

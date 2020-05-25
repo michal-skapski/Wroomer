@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using TMPro;
 using TMPro.Examples;
 using UnityEngine;
@@ -7,129 +8,66 @@ using UnityEngine.UI;
 
 public class Scoreboard : MonoBehaviour
 {
-    public int gameNumber;
-    public GameObject[] _posNumberArray;
-    public GameObject[] _nameArray;
-    public GameObject[] _scoreArray;
-    public TextMeshProUGUI[] nameArrayText;
-    private NameAssignerScene _name;
-
-
+    public int gameNum;
+    public int pointScore;
+    private int _gameNum;
+    private int _pointScore;
+    public List <GameObject> _posNumber;
+    public List <GameObject> _name;
+    public List <GameObject> _score;
+    private int _zeroVal = 0;
+    [SerializeField] private int _minScore = 0;
+    public List <TextMeshProUGUI> _nameText;
+    [SerializeField] private List <TMP_Text> _scoreCount;
+    [SerializeField] private GameObject _nameAssignerObject;
+    private NameAssignerScene _nameAssigner;
     private void Awake()
     {
-        
-        _name.GetComponent<NameAssignerScene>();
-        _posNumberArray[0].SetActive(false);
-        _posNumberArray[1].SetActive(false);
-        _posNumberArray[2].SetActive(false);
-        _posNumberArray[3].SetActive(false);
-        _posNumberArray[4].SetActive(false);
-        _posNumberArray[5].SetActive(false);
-        _nameArray[0].SetActive(false);
-        _nameArray[1].SetActive(false);
-        _nameArray[2].SetActive(false);
-        _nameArray[3].SetActive(false);
-        _nameArray[4].SetActive(false);
-        _nameArray[5].SetActive(false);
-        _scoreArray[0].SetActive(false);
-        _scoreArray[1].SetActive(false);
-        _scoreArray[2].SetActive(false);
-        _scoreArray[3].SetActive(false);
-        _scoreArray[4].SetActive(false);
-        _scoreArray[5].SetActive(false);
-    }
-
-    public void AddingNewScore()
-    {
-        switch (gameNumber)
+        gameNum = Random.Range(_zeroVal, _posNumber.Count);
+        _pointScore = Menu.score;
+        pointScore = _pointScore;
+        if (_pointScore > _minScore)
         {
-            case 1:
-                _posNumberArray[0].SetActive(true);
-                _nameArray[0].SetActive(true);
-                _scoreArray[0].SetActive(true);
-                break;
-            case 2:
-                _posNumberArray[0].SetActive(true);
-                _nameArray[0].SetActive(true);
-                _scoreArray[0].SetActive(true);
-                _posNumberArray[1].SetActive(true);
-                _nameArray[1].SetActive(true);
-                _scoreArray[1].SetActive(true);
-                break;
-            case 3:
-                _posNumberArray[0].SetActive(true);
-                _nameArray[0].SetActive(true);
-                _scoreArray[0].SetActive(true);
-                _posNumberArray[1].SetActive(true);
-                _nameArray[1].SetActive(true);
-                _scoreArray[1].SetActive(true);
-                _posNumberArray[2].SetActive(true);
-                _nameArray[2].SetActive(true);
-                _scoreArray[2].SetActive(true);
-                break;
-            case 4:
-                _posNumberArray[0].SetActive(true);
-                _nameArray[0].SetActive(true);
-                _scoreArray[0].SetActive(true);
-                _posNumberArray[1].SetActive(true);
-                _nameArray[1].SetActive(true);
-                _scoreArray[1].SetActive(true);
-                _posNumberArray[2].SetActive(true);
-                _nameArray[2].SetActive(true);
-                _scoreArray[2].SetActive(true);
-                _posNumberArray[3].SetActive(true);
-                _nameArray[3].SetActive(true);
-                _scoreArray[3].SetActive(true);
-                break;
-            case 5:
-                _posNumberArray[0].SetActive(true);
-                _nameArray[0].SetActive(true);
-                _scoreArray[0].SetActive(true);
-                _posNumberArray[1].SetActive(true);
-                _nameArray[1].SetActive(true);
-                _scoreArray[1].SetActive(true);
-                _posNumberArray[2].SetActive(true);
-                _nameArray[2].SetActive(true);
-                _scoreArray[2].SetActive(true);
-                _posNumberArray[3].SetActive(true);
-                _nameArray[3].SetActive(true);
-                _scoreArray[3].SetActive(true);
-                _posNumberArray[4].SetActive(true);
-                _nameArray[4].SetActive(true);
-                _scoreArray[4].SetActive(true);
-                break;
-            case 6:
-                _posNumberArray[0].SetActive(true);
-                _nameArray[0].SetActive(true);
-                _scoreArray[0].SetActive(true);
-                _posNumberArray[1].SetActive(true);
-                _nameArray[1].SetActive(true);
-                _scoreArray[1].SetActive(true);
-                _posNumberArray[2].SetActive(true);
-                _nameArray[2].SetActive(true);
-                _scoreArray[2].SetActive(true);
-                _posNumberArray[3].SetActive(true);
-                _nameArray[3].SetActive(true);
-                _scoreArray[3].SetActive(true);
-                _posNumberArray[4].SetActive(true);
-                _nameArray[4].SetActive(true);
-                _scoreArray[4].SetActive(true);
-                _posNumberArray[5].SetActive(true);
-                _nameArray[5].SetActive(true);
-                _scoreArray[5].SetActive(true);
-                break;
+            _gameNum = gameNum;
+            _nameAssigner = _nameAssignerObject.GetComponent<NameAssignerScene>();
+            for (int i = 0; i < _posNumber.Count; i++)
+            {
+                _posNumber[i].SetActive(false);
+            }
+            for (int i = 0; i < _name.Count; i++)
+            {
+                _name[i].SetActive(false);
+            }
+            for (int i = 0; i < _score.Count; i++)
+            {
+                _score[i].SetActive(false);
+            }
+            AddingValuesToScore();
         }
     }
-
     public void AddingValuesToScore()
     {
-        nameArrayText[gameNumber].text = _name.userNewName.ToString();
+        AddingNewScore(gameNum);
+        //nameText[gameNum].text = _nameAssigner.userNewName.ToString();
+        //TMP_Text text;
+        //text = _name[gameNum].GetComponent<Text>().text;
+        //text.text = "" + NameAssignerScene.playerName;
+        _nameText[gameNum].text = "Paczajta" + NameAssignerScene.playerName; //NameAssignerScene.playerName.GetComponent<Text>().text;
+        _scoreCount[gameNum].text = "" + _pointScore;
     }
-
-
-    private void Update()
+    public void AddingNewScore(int gameNum)
     {
-        AddingNewScore();
-        AddingValuesToScore();
+        _posNumber[gameNum].SetActive(true);
+        _name[gameNum].SetActive(true);
+        _score[gameNum].SetActive(true);
+        /*_gameNum = gameNum;
+        _gameNum--;
+        for (int i = _gameNum; i < gameNum; i++) // add later for assigning score place
+        {
+            _posNumber[i].SetActive(true);
+            _name[i].SetActive(true);
+            _score[i].SetActive(true);
+        }
+        */
     }
 }
