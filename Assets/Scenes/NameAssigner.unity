@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 169367848}
   - component: {fileID: 169367847}
   - component: {fileID: 169367846}
+  - component: {fileID: 169367849}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -204,6 +205,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &169367849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169367845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b29769808d1a6ab4ea3206ecae9cf6a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textBox: {fileID: 907321924}
 --- !u!1 &215955483
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,7 +300,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1819921874}
+      - m_Target: {fileID: 169367849}
         m_MethodName: ClickSaveButton
         m_Mode: 1
         m_Arguments:
@@ -1284,7 +1298,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1819921873}
-  - component: {fileID: 1819921874}
   m_Layer: 0
   m_Name: NameAssigner
   m_TagString: Untagged
@@ -1307,26 +1320,6 @@ Transform:
   m_Father: {fileID: 798226995}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1819921874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1819921872}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87644dedf124a1044b901badf597ecac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  userNameBox: {fileID: 907321924}
-  userNewName:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
 --- !u!1 &1890914559
 GameObject:
   m_ObjectHideFlags: 0

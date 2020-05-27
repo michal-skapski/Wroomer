@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class Scoreboard : MonoBehaviour
 {
+
     public int gameNum;
     public int pointScore;
     private int _gameNum;
@@ -21,8 +22,11 @@ public class Scoreboard : MonoBehaviour
     [SerializeField] private List <TMP_Text> _scoreCount;
     [SerializeField] private GameObject _nameAssignerObject;
     private NameAssignerScene _nameAssigner;
+    
+
     private void Awake()
     {
+        
         gameNum = Random.Range(_zeroVal, _posNumber.Count);
         _pointScore = Menu.score;
         pointScore = _pointScore;

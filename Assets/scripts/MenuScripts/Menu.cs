@@ -28,6 +28,7 @@ public class Menu : MonoBehaviour
     //menuScenes
     private string _menuScene = "Menu";
     private string _gameScene = "Prototype_01";
+    private string _nameAssignerScene = "NameAssigner";
     private void Start()
     {
         AssignMenu();
@@ -54,7 +55,7 @@ public class Menu : MonoBehaviour
     //add listener onclick
     public void GoToMenu()
     {
-        SceneManager.LoadScene(_menuScene);
+        SceneManager.LoadScene(_nameAssignerScene);
     }
     public void PlayGame()
     {
