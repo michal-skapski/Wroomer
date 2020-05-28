@@ -9,21 +9,14 @@ public class NameAssignerScene : MonoBehaviour
 {
     public TMP_InputField userNameBox;
     public static Text playerName;
-    //public List <string> userNewName;
     public string userName;
     private string _menuScene = "Menu";
-    //[SerializeField] private GameObject _scoreBoard;
     private Scoreboard _sb;
-    private void Awake()
-    {
-       // _sb = _scoreBoard.GetComponent<Scoreboard>();
-        
-    }
-
-
+    private int _zeroVal = 0;
+    private int _maxVal = 6;
     public void ClickSaveButton()
     {
-        for (int i = 0; i < 6; i++)
+        for (int i = _zeroVal; i < _maxVal; i++)
         {
             PlayerPrefs.SetString(userName, userNameBox.text);
         }

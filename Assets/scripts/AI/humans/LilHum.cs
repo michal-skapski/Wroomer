@@ -39,7 +39,7 @@ public class LilHum : MonoBehaviour
     }
     void Update()
     {
-        rb.velocity = Vector3.ClampMagnitude(rb.velocity, _maxSpeed); //fix
+        rb.velocity = Vector3.ClampMagnitude(rb.velocity, _maxSpeed); //fix //dont know how however
         if (_destroyed == false)
         {
             if (_isEnemy == false)

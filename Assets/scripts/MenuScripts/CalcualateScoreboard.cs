@@ -7,10 +7,9 @@ using TMPro;
 
 public class CalcualateScoreboard : MonoBehaviour
 {
-
     [SerializeField] private TMP_Text[] _nameBox;
     [SerializeField] private TMP_Text[] _scoreAmountBox;
-
+    private int _firstScore = 0;
     private int _userScore;
     private void Awake()
     {
@@ -21,14 +20,11 @@ public class CalcualateScoreboard : MonoBehaviour
     {
         PinningUserScore();
     }
-
     private void PinningUserScore()
     {
-        _nameBox[0].text = PlayerPrefs.GetString("name");
-        _scoreAmountBox[0].text = PlayerPrefs.GetString("userScore");
-
+        _nameBox[_firstScore].text = PlayerPrefs.GetString("name");
+        _scoreAmountBox[_firstScore].text = PlayerPrefs.GetString("userScore");
     }
-    
     public void ResetUserScores()
     {
         PlayerPrefs.DeleteAll();
