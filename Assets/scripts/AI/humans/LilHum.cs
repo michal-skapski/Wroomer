@@ -18,6 +18,7 @@ public class LilHum : MonoBehaviour
     [SerializeField] private int _points = -1;
     [SerializeField] private int _pointsIfEnemy = 3;
     [SerializeField] private bool _isEnemy = false;
+    [SerializeField] private bool _isZombie = false;
     private float _timeToDie = 5f;
     private int _zeroVal = 0;
     //gun part
@@ -42,7 +43,11 @@ public class LilHum : MonoBehaviour
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, _maxSpeed); //fix //dont know how however
         if (_destroyed == false)
         {
-            if (_isEnemy == false)
+            if (_isZombie == true && _isEnemy == false)
+            {
+                SearchForBrains();
+            }
+            if (_isZombie == false && _isEnemy == false)
             {
                 Roam();
             }
@@ -64,6 +69,21 @@ public class LilHum : MonoBehaviour
                 this.transform.rotation = Quaternion.Slerp(this.transform.rotation,
                     Quaternion.LookRotation(-direction), _rotSpeed);
                     Move();
+            }
+        }
+    }
+    private void SearchForBrains()
+    {
+        if (target != null)
+        {
+            Move();
+            Vector3 direction = target.position - this.transform.position;
+            float angle = Vector3.Angle(direction, this.transform.forward);
+            if (Vector3.Distance(target.position, this.transform.position) < _distToNotice)// && angle < visionAngle
+            {
+                direction.y = _zeroVal;
+                this.transform.rotation = Quaternion.Slerp(this.transform.rotation,
+                    Quaternion.LookRotation(direction), _rotSpeed);
             }
         }
     }
@@ -93,7 +113,7 @@ public class LilHum : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (_isEnemy == false)
+        if (_isEnemy == false && _isZombie == false)
         {
             target = other.transform;
         }
@@ -106,6 +126,13 @@ public class LilHum : MonoBehaviour
             else
             {
                 target = null;
+            }
+        }
+        if (_isZombie == true)
+        {
+            if (other.GetComponent<Car>())
+            {
+                target = other.transform;
             }
         }
     }
