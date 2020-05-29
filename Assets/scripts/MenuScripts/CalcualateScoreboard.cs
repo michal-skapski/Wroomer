@@ -3,19 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+using UnityEngine.SceneManagement;
 
 public class CalcualateScoreboard : MonoBehaviour
 {
     [SerializeField] private TMP_Text[] _nameBox;
     [SerializeField] private TMP_Text[] _scoreAmountBox;
+    [SerializeField] public GameObject _menuObjects;
+    [SerializeField] public GameObject _scoreboardObjects;
+    
     private int _firstScore = 0;
-    private int _userScore;
+
     private void Awake()
     {
-        _userScore = Menu.score;
-        PlayerPrefs.SetString("userScore", _userScore.ToString());
+        if(PlayerPrefs.GetString("scene")== "NameAssigner")
+        {
+           _menuObjects.SetActive(false);
+           _scoreboardObjects.SetActive(true);
+        }
     }
+
     void Start()
     {
         PinningUserScore();
@@ -28,9 +35,5 @@ public class CalcualateScoreboard : MonoBehaviour
     public void ResetUserScores()
     {
         PlayerPrefs.DeleteAll();
-        /*
-        PlayerPrefs.DeleteKey("name");
-        PlayerPrefs.DeleteKey("userScore");
-        */
     }
 }
