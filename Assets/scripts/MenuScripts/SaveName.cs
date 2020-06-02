@@ -13,6 +13,7 @@ public class SaveName : MonoBehaviour
     private int _userScore;
     public Text[] userNames;
     private CalcualateScoreboard _scoreboardScript;
+    private int _zeroVal = 0;
     private void Awake()
     {
         _scoreboardScript = GetComponent<CalcualateScoreboard>();

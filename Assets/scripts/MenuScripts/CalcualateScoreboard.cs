@@ -7,12 +7,14 @@ using UnityEngine.SceneManagement;
 
 public class CalcualateScoreboard : MonoBehaviour
 {
-    [SerializeField] private TMP_Text[] _nameBox;
-    [SerializeField] private TMP_Text[] _scoreAmountBox;
+    [SerializeField] public TMP_Text[] nameBox;
+    [SerializeField] public TMP_Text[] scoreAmountBox;
+    [SerializeField] private TMP_Text[] _posNumber;
     [SerializeField] public GameObject _menuObjects;
     [SerializeField] public GameObject _scoreboardObjects;
     
-    private int _firstScore = 0;
+    private int _zeroVal = 0;
+    private int _sixVal = 6;
 
     private void Awake()
     {
@@ -29,8 +31,29 @@ public class CalcualateScoreboard : MonoBehaviour
     }
     private void PinningUserScore()
     {
-        _nameBox[_firstScore].text = PlayerPrefs.GetString("name");
-        _scoreAmountBox[_firstScore].text = PlayerPrefs.GetString("userScore");
+        for (int _zeroVal = 0; _zeroVal < _sixVal; _zeroVal++)
+        {
+            if (nameBox[_zeroVal]!= null)
+            {
+                nameBox[_zeroVal].text = PlayerPrefs.GetString("name");
+                scoreAmountBox[_zeroVal].text = PlayerPrefs.GetString("userScore");
+            }
+            else
+            {
+                //nameBox[_zeroVal].text = PlayerPrefs.GetString("name");
+                //scoreAmountBox[_zeroVal].text = PlayerPrefs.GetString("userScore");
+
+            }
+        }
+
+
+           
+
+            
+
+        
+        //nameBox[zeroVal].text = PlayerPrefs.GetString("name");
+        //scoreAmountBox[zeroVal].text = PlayerPrefs.GetString("userScore");
     }
     public void ResetUserScores()
     {
