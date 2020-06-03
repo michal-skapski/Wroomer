@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class SaveJson
 {
-    public int[] bestScores = new int[10];
+    public int[] bestScores = new int[6];
 }

@@ -151,7 +151,7 @@ public class LilHum : MonoBehaviour
                 _menuRef.AddScore(_pointsIfEnemy);
                 _gaveScore = true;
             }
-            StartCoroutine("Vanquish");
+            StartCoroutine(Vanquish());
         }
     }
     IEnumerator Vanquish()

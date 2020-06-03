@@ -245,7 +245,7 @@ public class AltCarMove : MonoBehaviour
     {
         _wheelTrail.Play();
         _wheelTrail_2.Play();
-        StartCoroutine("SpeedBoost");
+        StartCoroutine(SpeedBoost());
     }
     IEnumerator SpeedBoost() //is called when nitro is used / changes speed values for short period of time
     {
