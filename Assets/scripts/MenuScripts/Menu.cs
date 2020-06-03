@@ -26,12 +26,12 @@ public class Menu : MonoBehaviour
     [SerializeField] private GameObject _trdWave;
     [SerializeField] private bool _inArena = false;
     //menuScenes
-    private string _menuScene = "Menu";
     private string _gameScene = "Prototype_01";
     private string _nameAssignerScene = "NameAssigner";
+
     private void Awake()
     {
-        PlayerPrefs.SetString("scene", SceneManager.GetActiveScene().name);
+        PlayerPrefs.SetString("scene", SceneManager.GetActiveScene().name); // this player prefs help us transfering our scenes
     }
     private void Start()
     {
@@ -42,7 +42,9 @@ public class Menu : MonoBehaviour
             score = _score;
             _thisStaticMenu = _thisMenu;
             _remainingTime = _timer;
-            StartCoroutine("ArenaMatchStart");
+            StartCoroutine(ArenaMatchStart());
+            
+            //StartCoroutine("ArenaMatchStart");
             StartCoroutine("SecondWave");
             StartCoroutine("ThirdWave");
             anim = _clockTimer.GetComponent<Animator>();

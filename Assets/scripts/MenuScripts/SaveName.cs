@@ -26,9 +26,9 @@ public class SaveName : MonoBehaviour
     }
     public void ClickSaveButton()
     {
-        PlayerPrefs.SetString("scene", SceneManager.GetActiveScene().name);
+        PlayerPrefs.SetString("scene", SceneManager.GetActiveScene().name); // this string makes transfer directly to scoreboard not to menu
         PlayerPrefs.SetString("name", textBox.text);
         PlayerPrefs.SetString("userScore", _userScore.ToString());
         SceneManager.LoadScene(_menuScene);
-    }    
+    }
 }

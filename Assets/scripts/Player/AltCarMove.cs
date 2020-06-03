@@ -53,6 +53,14 @@ public class AltCarMove : MonoBehaviour
     private float _joyTurnVal = 0.75f;
     void Awake()
     {
+        if (SystemInfo.deviceType == DeviceType.Desktop)
+        {
+            _joystickControlled = false;
+        }
+        else if (SystemInfo.deviceType == DeviceType.Handheld)
+        {
+            _joystickControlled = true;
+        }
         rb = GetComponent<Rigidbody>();
         anim = _wheelz.GetComponent<Animator>();
         bAnim = _secWheelz.GetComponent<Animator>();
