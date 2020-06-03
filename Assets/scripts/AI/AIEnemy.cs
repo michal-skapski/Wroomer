@@ -37,6 +37,7 @@ public class AIEnemy : MonoBehaviour
     private int _zeroDir = 0;
     private float _nextTimeToFire = 0f;
     private float _timeMeasure = 1f;
+    private bool _hitByTrail = true;
     [SerializeField] private GameObject _gun;
     [SerializeField] private GameObject _hpShell;
     private HP _myHp;
@@ -178,7 +179,8 @@ public class AIEnemy : MonoBehaviour
     }
     public void DeathByTrail(int dmg)
     {
-        _myHp.TakeDamage(dmg, _isPlayer);
+        //Debug.Log("DeathByTrail");
+        _myHp.TakeDamage(dmg, _hitByTrail);
     }
     private void OnTriggerEnter(Collider other)
     {

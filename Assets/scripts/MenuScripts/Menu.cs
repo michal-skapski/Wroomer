@@ -15,6 +15,8 @@ public class Menu : MonoBehaviour
     [SerializeField] private float _timer;
     private float _remainingTime;
     private Animator anim;
+    private Animator _2ndanim;
+    private Animator _3rdanim;
     [SerializeField] private TMP_Text _scoreCount;
     private int _score; 
     static public int score;
@@ -24,6 +26,8 @@ public class Menu : MonoBehaviour
     [SerializeField] private float _thirdWave;
     [SerializeField] private GameObject _sndWave;
     [SerializeField] private GameObject _trdWave;
+    [SerializeField] private GameObject _sndWaveText;
+    [SerializeField] private GameObject _trdWaveText;
     [SerializeField] private bool _inArena = false;
     //menuScenes
     private string _menuScene = "Menu";
@@ -46,6 +50,8 @@ public class Menu : MonoBehaviour
             StartCoroutine("SecondWave");
             StartCoroutine("ThirdWave");
             anim = _clockTimer.GetComponent<Animator>();
+            _3rdanim = _trdWaveText.GetComponent<Animator>();
+            _2ndanim = _sndWaveText.GetComponent<Animator>();
         }
     }
     void Update()
@@ -85,11 +91,13 @@ public class Menu : MonoBehaviour
     {
         yield return new WaitForSeconds(_secondWave);
         _sndWave.SetActive(true);
+        _2ndanim.SetTrigger("BlowUp");
     }
     IEnumerator ThirdWave()
     {
         yield return new WaitForSeconds(_thirdWave);
         _trdWave.SetActive(true);
+        _3rdanim.SetTrigger("BlowUp");
         anim.SetTrigger("BlowUp");
     }
     IEnumerator ArenaMatchStart()

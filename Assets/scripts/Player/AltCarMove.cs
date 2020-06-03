@@ -183,7 +183,7 @@ public class AltCarMove : MonoBehaviour
         _weapNum++;
         if (_weapNum >= _weapons.Count)
         {
-            _weapNum = _weapons.Count;
+            _weapNum = _zeroVal;
         }
         WeaponPick();
     }
