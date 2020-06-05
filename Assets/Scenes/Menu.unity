@@ -1349,7 +1349,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &315742955
 Transform:
   m_ObjectHideFlags: 0
@@ -3341,7 +3341,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &763432341
 Transform:
   m_ObjectHideFlags: 0
@@ -6213,6 +6213,8 @@ MonoBehaviour:
   _thirdWave: 0
   _sndWave: {fileID: 0}
   _trdWave: {fileID: 0}
+  _sndWaveText: {fileID: 0}
+  _trdWaveText: {fileID: 0}
   _inArena: 0
 --- !u!4 &1952808792
 Transform:
