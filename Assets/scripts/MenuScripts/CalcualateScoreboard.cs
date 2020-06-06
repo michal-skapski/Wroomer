@@ -18,6 +18,7 @@ public class CalcualateScoreboard : MonoBehaviour
     [SerializeField] private TMP_Text[] _posNumber;
     [SerializeField] public GameObject _menuObjects;
     [SerializeField] public GameObject _scoreboardObjects;
+    private SaveName _saveNameScript;
     private int[] _highScore = new int[6];
     
     private int _zeroVal = 0;
@@ -44,16 +45,30 @@ public class CalcualateScoreboard : MonoBehaviour
         }
     }
 
+    private void CheckingScore()
+    {
+        if (_saveNameScript.userScore > _zeroVal || _saveNameScript.userScore >= _highScore[_zeroVal])
+        {
+            for (int i = _zeroVal; i < _sixVal; i++)
+            {
+                PinningUserScore();
+                SelectionSort(_highScore);
+                SystemJSON.Instance.Save();
+            }
+
+        }
+    }
+
     private void PinningUserScore()
     {
-        _highScore = SystemJson.Instance.HighScore;
+        _highScore = SystemJSON.Instance.Highscore;
         
-        for (int _zeroVal = 0; _zeroVal < _sixVal; _zeroVal++)
+        for (int i = 0; _zeroVal < _sixVal; i++)
         {
-            if (nameBox[_zeroVal]!= null)
+            if (nameBox[i]!= null)
             {
-                nameBox[_zeroVal].text = PlayerPrefs.GetString("name");
-                scoreAmountBox[_zeroVal].text = _highScore[_zeroVal].ToString();
+                nameBox[i].text = PlayerPrefs.GetString("name");
+                scoreAmountBox[i].text = _highScore[_zeroVal].ToString();
                 //scoreAmountBox[_zeroVal].text = PlayerPrefs.GetString("userScore");
             }
             else
@@ -67,16 +82,14 @@ public class CalcualateScoreboard : MonoBehaviour
         //nameBox[zeroVal].text = PlayerPrefs.GetString("name");
         //scoreAmountBox[zeroVal].text = PlayerPrefs.GetString("userScore");
     }
-    public void ResetUserScores()
+    public void ResetUserScores() // do it by the json method 
     {
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
     }
     private void Awake()
     {
-
-        string loadString = File.ReadAllText(Application.dataPath + "/highscores.txt");
-        SaveJson loadedSaveObject = JsonUtility.FromJson<SaveJson>(loadString);
-        _highScore = loadedSaveObject.bestScores;
+        _saveNameScript = GetComponent<SaveName>();
+        SystemJSON.Instance.Load();
 
         if (PlayerPrefs.GetString("scene") == "NameAssigner")
         {
@@ -86,6 +99,6 @@ public class CalcualateScoreboard : MonoBehaviour
     }
     void Start()
     {
-        PinningUserScore();
+        CheckingScore();
     }
 }

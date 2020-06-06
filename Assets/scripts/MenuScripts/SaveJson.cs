@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SaveJson
+public class SaveJSON
 {
     public int[] bestScores = new int[6];
 }

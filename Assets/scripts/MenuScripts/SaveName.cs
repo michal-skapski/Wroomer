@@ -10,14 +10,14 @@ public class SaveName : MonoBehaviour
 {
     public TMP_InputField textBox;
     private string _menuScene = "Menu";
-    private int _userScore;
+    public int userScore;
     public Text[] userNames;
     private CalcualateScoreboard _scoreboardScript;
     private int _zeroVal = 0;
     private void Awake()
     {
         _scoreboardScript = GetComponent<CalcualateScoreboard>();
-        _userScore = Menu.score;
+        userScore = Menu.score;
         if(SystemInfo.deviceType == DeviceType.Desktop)
         {
             Cursor.lockState = CursorLockMode.None;
@@ -28,7 +28,7 @@ public class SaveName : MonoBehaviour
     {
         PlayerPrefs.SetString("scene", SceneManager.GetActiveScene().name); // this string makes transfer directly to scoreboard not to menu
         PlayerPrefs.SetString("name", textBox.text);
-        PlayerPrefs.SetString("userScore", _userScore.ToString());
+        PlayerPrefs.SetString("userScore", userScore.ToString());
         SceneManager.LoadScene(_menuScene);
     }
 }

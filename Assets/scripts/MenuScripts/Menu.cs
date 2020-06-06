@@ -47,10 +47,8 @@ public class Menu : MonoBehaviour
             _thisStaticMenu = _thisMenu;
             _remainingTime = _timer;
             StartCoroutine(ArenaMatchStart());
-            
-            //StartCoroutine("ArenaMatchStart");
-            StartCoroutine("SecondWave");
-            StartCoroutine("ThirdWave");
+            StartCoroutine(SecondWave());
+            StartCoroutine(ThirdWave());
             anim = _clockTimer.GetComponent<Animator>();
             _3rdanim = _trdWaveText.GetComponent<Animator>();
             _2ndanim = _sndWaveText.GetComponent<Animator>();
