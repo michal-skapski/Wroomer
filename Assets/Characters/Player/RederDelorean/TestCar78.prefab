@@ -2367,7 +2367,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1, y: 35}
+  m_AnchoredPosition: {x: 1, y: 37.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3050455592034158828
@@ -12831,7 +12831,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4110751217224408326}
-  m_LocalRotation: {x: 0.1891075, y: 0.000000021612504, z: -0.000000004162187, w: 0.9819564}
+  m_LocalRotation: {x: 0.1891075, y: 0.000000023694025, z: -0.0000000045630513, w: 0.9819564}
   m_LocalPosition: {x: 0, y: 3.5, z: -7.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -13062,7 +13062,7 @@ MonoBehaviour:
   _tutorialPanel: {fileID: 2597914624274984036}
   _destroyed: 0
   _hidden: 0
-  _joystickControlled: 0
+  _joystickControlled: 1
   _leftJoystick: {fileID: 4740545869900178580}
   _deadlyTrail: {fileID: 4808652161580384023}
 --- !u!114 &4110751217839180574
@@ -13131,7 +13131,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4580138428419125933}
-  m_LocalRotation: {x: 0.1891075, y: 0.000000021612504, z: -0.000000004162187, w: 0.9819564}
+  m_LocalRotation: {x: 0.1891075, y: 0.000000023694025, z: -0.0000000045630513, w: 0.9819564}
   m_LocalPosition: {x: 0, y: 3.5, z: -7.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
