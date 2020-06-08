@@ -24,7 +24,7 @@ public class Spawn : MonoBehaviour
         {
             if (_appearing == false)
             {
-                StartCoroutine("StartSpawning"); //sets internal timer in motion
+                StartCoroutine(StartSpawning()); //sets internal timer in motion
             }
         }
     }

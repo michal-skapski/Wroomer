@@ -99,7 +99,7 @@ public class HP : MonoBehaviour
     }
     public void Shield()
     {
-        StartCoroutine("Shielded"); //activates shield system
+        StartCoroutine(Shielded()); //activates shield system
     }
     IEnumerator Shielded()
     {

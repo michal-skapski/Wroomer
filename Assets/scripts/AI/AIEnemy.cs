@@ -129,7 +129,7 @@ public class AIEnemy : MonoBehaviour
         }
         else if(_isStuck == true)
         {
-            StartCoroutine("BackUp");
+            StartCoroutine(BackUp());
         }
     }
     public void Hit()

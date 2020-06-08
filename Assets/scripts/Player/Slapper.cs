@@ -17,13 +17,13 @@ public class Slapper : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             anim.SetBool("Slap", true);
-            StartCoroutine("FixTheSlap");
+            StartCoroutine(FixTheSlap());
         }
     }
     public void JoystickSlap()
     {
         anim.SetBool("Slap", true);
-        StartCoroutine("FixTheSlap");
+        StartCoroutine(FixTheSlap());
     }
     public void Slap()
     {
