@@ -44,7 +44,7 @@ public class AltCarMove : MonoBehaviour
     public bool _hidden = false;
     private bool _turned = false;
     private Menu _menu;
-    [SerializeField] private bool _joystickControlled = false;
+    [SerializeField] private bool _joystickControlled = true;
     //joystick mov
     private int _singleVal = 1;
     [SerializeField] private SimpleTouchController _leftJoystick;
