@@ -11,7 +11,6 @@ public class SaveName : MonoBehaviour
     public TMP_InputField textBox;
     private string _menuScene = "Menu";
     public int userScore;
-    public Text[] userNames;
     private CalcualateScoreboard _scoreboardScript;
     private int _zeroVal = 0;
     private void Awake()
@@ -27,8 +26,7 @@ public class SaveName : MonoBehaviour
     public void ClickSaveButton()
     {
         PlayerPrefs.SetString("scene", SceneManager.GetActiveScene().name); // this string makes transfer directly to scoreboard not to menu
-        PlayerPrefs.SetString("name", textBox.text);
-        PlayerPrefs.SetString("userScore", userScore.ToString());
-        SceneManager.LoadScene(_menuScene);
+        //PlayerPrefs.SetString("name", textBox.text);
+        //PlayerPrefs.SetString("userScore", userScore.ToString());
     }
 }

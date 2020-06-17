@@ -55,4 +55,15 @@ public class SystemJSON : MonoBehaviour
     {
         _instance = this;
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                _highscore[i] = Menu.score;
+                Save();
+            }
+        }
+    }
 }
