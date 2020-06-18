@@ -8,6 +8,11 @@ public class SystemJSON : MonoBehaviour
     private static SystemJSON _instance;
     private int[] _highscore = new int[6];
     private string _fileName = "/scores.txt";
+    private void Awake()
+    {
+        _instance = this;
+        Load();
+    }
     public static SystemJSON Instance
     {
         get
@@ -28,6 +33,7 @@ public class SystemJSON : MonoBehaviour
         set
         {
             _highscore = value;
+            Save();
         }
     }
     public void Save()
@@ -51,10 +57,7 @@ public class SystemJSON : MonoBehaviour
             Debug.LogError("File with amount of scores do not exists!");
         }
     }      
-    private void Awake()
-    {
-        _instance = this;
-    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.N))
@@ -62,7 +65,7 @@ public class SystemJSON : MonoBehaviour
             for (int i = 0; i < 6; i++)
             {
                 _highscore[i] = Menu.score;
-                Save();
+                Save();                
             }
         }
     }

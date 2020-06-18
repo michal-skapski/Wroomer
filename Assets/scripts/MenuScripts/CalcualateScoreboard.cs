@@ -20,10 +20,11 @@ public class CalcualateScoreboard : MonoBehaviour
     [SerializeField] private GameObject _scoreboardObjects;
     [SerializeField] private GameObject _saveNameObjects;
     private string _gameSceneName = "Prototype_01";
-    private SaveName _saveNameScript;
+    [SerializeField] private SaveName _saveNameScript;
     private int[] _highScore = new int[6];
     
     private int _zeroVal = 0;
+    private int _fiveVal = 5;
     private int _sixVal = 6;
 
 
@@ -35,12 +36,36 @@ public class CalcualateScoreboard : MonoBehaviour
             {
                 PinningUserScore();
                 //SelectionSort(_highScore);
-                SystemJSON.Instance.Save();
             }
-
         }
     }
+    public void SaveArrayScore()
+    {
+        // tu przechwyć aktualny wynik zz player prefs (current score)
+        // sprawdź czy zapisać wynik do highscore - czy wynik jest wysoki 
+        // tak zapisz na odpowiednim miejsu nie zignorować (_highcore)
+        // later instantiate
+        for (int i = _zeroVal; i < _fiveVal; i++)
+        {
+            if (PlayerPrefs.GetInt("currentScore") > _highScore[i])
+            {
+                _highScore[i] = PlayerPrefs.GetInt("currentScore");                
+            }
+        }
+        /*
+        if (PlayerPrefs.GetInt("currentScore")>_highScore[5])
+        {
+            _highScore[5] = PlayerPrefs.GetInt("currentScore");
+        }
+        else
+        {
+            _highScore[1] = PlayerPrefs.GetInt("currentScore");
+        }
+        */
 
+        
+        SystemJSON.Instance.Highscore = _highScore;
+    }
     private void PinningUserScore()
     {
         _highScore = SystemJSON.Instance.Highscore;
@@ -59,11 +84,14 @@ public class CalcualateScoreboard : MonoBehaviour
         if (PlayerPrefs.GetString("scene") == _gameSceneName)
         {
             _menuObjects.SetActive(false);
+            
             _saveNameObjects.SetActive(true);
         }
-
-        _saveNameScript = GetComponent<SaveName>();
-        SystemJSON.Instance.Load();
+        else
+        {
+            _menuObjects.SetActive(true);
+            _saveNameObjects.SetActive(false);
+        }
 
     }
     void Start()
@@ -77,7 +105,7 @@ public class CalcualateScoreboard : MonoBehaviour
 
 
     //script on selecting the scores might become usefull later
-    /*
+    
     private void SelectionSort(int[] unsortedList)
     {
         int min;
@@ -98,5 +126,5 @@ public class CalcualateScoreboard : MonoBehaviour
             }
         }
     }
-    */
+    
 }
