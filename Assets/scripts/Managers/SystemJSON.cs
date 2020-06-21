@@ -57,9 +57,4 @@ public class SystemJSON : MonoBehaviour
             Debug.LogError("File with amount of scores do not exists!");
         }
     }
-
-    private void Update()
-    {
-        Save();
-    }
 }

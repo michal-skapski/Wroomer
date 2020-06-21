@@ -22,66 +22,48 @@ public class CalcualateScoreboard : MonoBehaviour
     private string _gameSceneName = "Prototype_01";
     [SerializeField] private SaveName _saveNameScript;
     private int[] _highScore = new int[6];
-    
-    private int _zeroVal = 0;
-    private int _fiveVal = 5;
-    private int _sixVal = 6;
-    private int _backup;
 
+    private int _zeroVal = 0;
+    private int _sixVal = 6;
+    
     private void CheckingScore()
     {
-        if (_saveNameScript.userScore > _zeroVal || _saveNameScript.userScore >= _highScore[_zeroVal])
-        {
-            for (int i = _zeroVal; i < _sixVal; i++)
-            {
-                PinningUserScore();
-                //SelectionSort(_highScore);
-            }
-        }
+        PinningUserScore();
     }
+    
     public void SaveArrayScore()
     {
+        
         // tu przechwyć aktualny wynik zz player prefs (current score) - done
         // sprawdź czy zapisać wynik do highscore - czy wynik jest wysoki - done 
         // tak zapisz na odpowiednim miejsu nie zignorować (_highcore)
-        // later instantiate
-        if (PlayerPrefs.GetInt("currentScore") > _zeroVal)
+        // later instantiate - done
+
+        for (int i = _zeroVal; i < _sixVal; i++)
         {
-            
-            for (int i = _zeroVal; i <_fiveVal; i++)
+            if (PlayerPrefs.GetInt("currentScore") > _highScore[i])
             {
-                if (_highScore[i] != _zeroVal)
-                {
-                    i++;
-                    _highScore[i] = PlayerPrefs.GetInt("currentScore");
-                }
-                  
-                break;                
+                _highScore[i] = PlayerPrefs.GetInt("currentScore");
+                break;
             }
         }
-
-        /*
-        if (PlayerPrefs.GetInt("currentScore")>_highScore[5])
-        {
-            _highScore[5] = PlayerPrefs.GetInt("currentScore");
-        }
-        else
-        {
-            _highScore[1] = PlayerPrefs.GetInt("currentScore");
-        }
-        */
-
-        
         SystemJSON.Instance.Highscore = _highScore;
+        MatchingScore();
     }
     private void PinningUserScore()
     {
         _highScore = SystemJSON.Instance.Highscore;
-        
-        
-        
-        //nameBox[zeroVal].text = PlayerPrefs.GetString("name");
-        //scoreAmountBox[zeroVal].text = PlayerPrefs.GetString("userScore");
+    }
+    private void MatchingScore()
+    {
+        for (int i = 0; i < _sixVal; i++)
+        {
+            if (_highScore[i] != _zeroVal)
+            {
+                _posNumber[i].gameObject.SetActive(true);
+                scoreAmountBox[i].text = _highScore[i].ToString();
+            }
+        }
     }
     public void ResetUserScores() // do it by the json method 
     {
@@ -100,39 +82,13 @@ public class CalcualateScoreboard : MonoBehaviour
             _menuObjects.SetActive(true);
             _saveNameObjects.SetActive(false);
         }
-
     }
     void Start()
     {
         CheckingScore();
     }
-
-
-
-
-
-
-    //script on selecting the scores might become usefull later
-    
-    private void SelectionSort(int[] unsortedList)
+    private void Update()
     {
-        int min;
-        int tempSwappingSpace;
-        for (int i = 0; i < unsortedList.Length; i++)
-        {
-            min = i;
-            for (int j = i; j < unsortedList.Length; j++)
-            {
-                min = j;
-
-            }
-            if (min != i)
-            {
-                tempSwappingSpace = unsortedList[i];
-                unsortedList[i] = unsortedList[min];
-                unsortedList[min] = tempSwappingSpace;
-            }
-        }
+        MatchingScore();
     }
-    
 }
