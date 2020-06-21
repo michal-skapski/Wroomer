@@ -56,17 +56,10 @@ public class SystemJSON : MonoBehaviour
         {
             Debug.LogError("File with amount of scores do not exists!");
         }
-    }      
+    }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            for (int i = 0; i < 6; i++)
-            {
-                _highscore[i] = Menu.score;
-                Save();                
-            }
-        }
+        Save();
     }
 }

@@ -26,7 +26,7 @@ public class CalcualateScoreboard : MonoBehaviour
     private int _zeroVal = 0;
     private int _fiveVal = 5;
     private int _sixVal = 6;
-
+    private int _backup;
 
     private void CheckingScore()
     {
@@ -41,17 +41,25 @@ public class CalcualateScoreboard : MonoBehaviour
     }
     public void SaveArrayScore()
     {
-        // tu przechwyć aktualny wynik zz player prefs (current score)
-        // sprawdź czy zapisać wynik do highscore - czy wynik jest wysoki 
+        // tu przechwyć aktualny wynik zz player prefs (current score) - done
+        // sprawdź czy zapisać wynik do highscore - czy wynik jest wysoki - done 
         // tak zapisz na odpowiednim miejsu nie zignorować (_highcore)
         // later instantiate
-        for (int i = _zeroVal; i < _fiveVal; i++)
+        if (PlayerPrefs.GetInt("currentScore") > _zeroVal)
         {
-            if (PlayerPrefs.GetInt("currentScore") > _highScore[i])
+            
+            for (int i = _zeroVal; i <_fiveVal; i++)
             {
-                _highScore[i] = PlayerPrefs.GetInt("currentScore");                
+                if (_highScore[i] != _zeroVal)
+                {
+                    i++;
+                    _highScore[i] = PlayerPrefs.GetInt("currentScore");
+                }
+                  
+                break;                
             }
         }
+
         /*
         if (PlayerPrefs.GetInt("currentScore")>_highScore[5])
         {
