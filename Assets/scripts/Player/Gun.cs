@@ -19,6 +19,7 @@ public class Gun : MonoBehaviour
     private float mouseY;
     private int _limit = 60;
     [SerializeField] private bool _autoGunControl = false;
+    [SerializeField] private bool _automatic = false;
     void Update()
     {   //TEST
         if (Input.GetKey(KeyCode.Space) && Time.time >= _nextTimeToFire)
@@ -47,6 +48,19 @@ public class Gun : MonoBehaviour
             Shoot();
         }
     }
+    //button methods Events
+    public void onPress()
+    {
+        if (Time.time >= _nextTimeToFire)
+        {
+            _nextTimeToFire = Time.time + _timeMeasure / _fireRate;
+            Shoot();
+        }
+    }
+    public void onRelease()
+    {
+    }
+    //further methods
     void AutoAim()
     {
         if (_weapTarget != null)

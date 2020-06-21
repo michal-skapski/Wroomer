@@ -2587,6 +2587,7 @@ MonoBehaviour:
   _tpsCam: {fileID: 4110751217208045909}
   _gunRotate: {fileID: 6752720294033048171}
   _autoGunControl: 1
+  _automatic: 0
 --- !u!1 &2771645581363551309
 GameObject:
   m_ObjectHideFlags: 0
@@ -13775,7 +13776,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4110751217224408326}
-  m_LocalRotation: {x: 0.1891075, y: 0.000000021612504, z: -0.000000004162187, w: 0.9819564}
+  m_LocalRotation: {x: 0.18910752, y: 0.000000014965833, z: -0.0000000028821556, w: 0.9819564}
   m_LocalPosition: {x: 0, y: 3.5, z: -7.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -14075,7 +14076,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4580138428419125933}
-  m_LocalRotation: {x: 0.1891075, y: 0.000000021612504, z: -0.000000004162187, w: 0.9819564}
+  m_LocalRotation: {x: 0.18910752, y: 0.000000014965833, z: -0.0000000028821556, w: 0.9819564}
   m_LocalPosition: {x: 0, y: 3.5, z: -7.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -14236,6 +14237,7 @@ MonoBehaviour:
   _tpsCam: {fileID: 0}
   _gunRotate: {fileID: 0}
   _autoGunControl: 0
+  _automatic: 0
 --- !u!1 &4941629140030726586
 GameObject:
   m_ObjectHideFlags: 0
@@ -19912,6 +19914,7 @@ MonoBehaviour:
   _tpsCam: {fileID: 4110751217208045909}
   _gunRotate: {fileID: 5591767347010562444}
   _autoGunControl: 1
+  _automatic: 0
 --- !u!135 &1036378477915839900
 SphereCollider:
   m_ObjectHideFlags: 0

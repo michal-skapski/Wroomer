@@ -12386,7 +12386,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &560848845
 Transform:
   m_ObjectHideFlags: 0
@@ -25736,8 +25736,8 @@ GameObject:
   - component: {fileID: 981473489}
   - component: {fileID: 981473492}
   - component: {fileID: 981473491}
-  - component: {fileID: 981473490}
   - component: {fileID: 981473493}
+  - component: {fileID: 981473490}
   m_Layer: 0
   m_Name: deathZone
   m_TagString: Untagged
@@ -25753,8 +25753,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 981473488}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -25, z: 0}
-  m_LocalScale: {x: 1000, y: 10, z: 1000}
+  m_LocalPosition: {x: 0, y: -275, z: 0}
+  m_LocalScale: {x: 2000, y: 10, z: 2000}
   m_Children: []
   m_Father: {fileID: 2126472735}
   m_RootOrder: 7
@@ -25828,9 +25828,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 981473488}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 239a2e5e20b6b3f47994cb58fdd85867, type: 3}
+  m_Script: {fileID: 11500000, guid: 57f3b9c542682cb4a825fa0154a19129, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: 200
+  _myTrigger: 0
 --- !u!1001 &989133925
 PrefabInstance:
   m_ObjectHideFlags: 0
