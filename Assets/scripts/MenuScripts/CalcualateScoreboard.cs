@@ -24,27 +24,38 @@ public class CalcualateScoreboard : MonoBehaviour
     private int[] _highScore = new int[6];
 
     private int _zeroVal = 0;
-    private int _sixVal = 6;
+    private int _sixVal = 5;
     
     private void CheckingScore()
     {
         PinningUserScore();
     }
     
+
+
     public void SaveArrayScore()
     {
-        
+
         // tu przechwyć aktualny wynik zz player prefs (current score) - done
         // sprawdź czy zapisać wynik do highscore - czy wynik jest wysoki - done 
         // tak zapisz na odpowiednim miejsu nie zignorować (_highcore)
         // later instantiate - done
 
+        _highScore = SystemJSON.Instance.Highscore;
+
         for (int i = _zeroVal; i < _sixVal; i++)
         {
             if (PlayerPrefs.GetInt("currentScore") > _highScore[i])
             {
+
+                for (int z = _sixVal; z < i; z--)
+                {
+                    Debug.Log("test");
+                    _highScore[z] = _highScore[z - 1];
+                    Debug.Log("z: " + z + " z-1: " + (z - 1));
+                }
                 _highScore[i] = PlayerPrefs.GetInt("currentScore");
-                break;
+                //break;
             }
         }
         SystemJSON.Instance.Highscore = _highScore;
@@ -67,14 +78,16 @@ public class CalcualateScoreboard : MonoBehaviour
     }
     public void ResetUserScores() // do it by the json method 
     {
-        //PlayerPrefs.DeleteAll();
+        for (int i = _zeroVal; i < _sixVal; i++)
+        {
+            _highScore[i] = 0;
+        }
     }
     private void Awake()
     {
         if (PlayerPrefs.GetString("scene") == _gameSceneName)
         {
-            _menuObjects.SetActive(false);
-            
+            _menuObjects.SetActive(false);            
             _saveNameObjects.SetActive(true);
         }
         else
@@ -90,5 +103,27 @@ public class CalcualateScoreboard : MonoBehaviour
     private void Update()
     {
         MatchingScore();
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            PlayerPrefs.SetInt("currentScore", 10);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            PlayerPrefs.SetInt("currentScore", 20);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            PlayerPrefs.SetInt("currentScore", 30);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            PlayerPrefs.SetInt("currentScore", 0);
+            for (int i = _sixVal; i < _sixVal; i++)
+            {
+                _highScore[i] = 0;
+            }
+            SystemJSON.Instance.Highscore = _highScore;
+        }
+
     }
 }
