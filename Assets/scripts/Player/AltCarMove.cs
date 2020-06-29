@@ -64,7 +64,7 @@ public class AltCarMove : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         anim = _wheelz.GetComponent<Animator>();
         bAnim = _secWheelz.GetComponent<Animator>();
-        _menu = menuManager.GetComponent<Menu>();
+        //_menu = menuManager.GetComponent<Menu>(); // turned off for trailer purpose
         _movSpeed = _moveSpeed;
     }
     void Update()
