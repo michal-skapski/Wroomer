@@ -78,10 +78,11 @@ public class CalcualateScoreboard : MonoBehaviour
     }
     public void ResetUserScores() // do it by the json method 
     {
-        for (int i = _zeroVal; i < _sixVal; i++)
+        for (int i = _zeroVal; i <= _sixVal; i++)
         {
             _highScore[i] = 0;
         }
+        SystemJSON.Instance.Save();
     }
     private void Awake()
     {
@@ -103,27 +104,5 @@ public class CalcualateScoreboard : MonoBehaviour
     private void Update()
     {
         MatchingScore();
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            PlayerPrefs.SetInt("currentScore", 10);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            PlayerPrefs.SetInt("currentScore", 20);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            PlayerPrefs.SetInt("currentScore", 30);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            PlayerPrefs.SetInt("currentScore", 0);
-            for (int i = _sixVal; i < _sixVal; i++)
-            {
-                _highScore[i] = 0;
-            }
-            SystemJSON.Instance.Highscore = _highScore;
-        }
-
     }
 }
