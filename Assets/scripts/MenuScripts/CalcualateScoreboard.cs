@@ -48,14 +48,14 @@ public class CalcualateScoreboard : MonoBehaviour
             if (PlayerPrefs.GetInt("currentScore") > _highScore[i])
             {
 
-                for (int z = _sixVal; z < i; z--)
+                for (int z = _sixVal; z > i; z--)
                 {
                     Debug.Log("test");
                     _highScore[z] = _highScore[z - 1];
                     Debug.Log("z: " + z + " z-1: " + (z - 1));
                 }
                 _highScore[i] = PlayerPrefs.GetInt("currentScore");
-                //break;
+                break;
             }
         }
         SystemJSON.Instance.Highscore = _highScore;
@@ -67,7 +67,7 @@ public class CalcualateScoreboard : MonoBehaviour
     }
     private void MatchingScore()
     {
-        for (int i = 0; i < _sixVal; i++)
+        for (int i = 0; i <= _sixVal; i++)
         {
             if (_highScore[i] != _zeroVal)
             {
