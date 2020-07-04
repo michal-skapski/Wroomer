@@ -51,6 +51,7 @@ public class AltCarMove : MonoBehaviour
     [SerializeField] private ParticleSystem _deadlyTrail;
     private Vector3 _movement;
     private float _joyTurnVal = 0.75f;
+    private float _backUpTurnVal = 0.5f;
     void Awake()
     {
         if (SystemInfo.deviceType == DeviceType.Desktop)
@@ -125,7 +126,7 @@ public class AltCarMove : MonoBehaviour
             {
                 GoingStraight(_movSpeed);
             }
-            if (_movement.z < _zeroVal)
+            if (_movement.z < -_backUpTurnVal)
             {
                 GoingStraight(-_movSpeed);
             }

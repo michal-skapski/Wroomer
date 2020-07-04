@@ -13,6 +13,7 @@ public class Spawn : MonoBehaviour
     public bool _appearing = false;
     [SerializeField] private bool _isPlayer = false;
     [SerializeField] private GameObject _menu;
+    [SerializeField] private GameObject _deathCam;
 
     private void Start()
     {
@@ -24,7 +25,11 @@ public class Spawn : MonoBehaviour
         {
             if (_appearing == false)
             {
-                StartCoroutine(StartSpawning()); //sets internal timer in motion
+                StartCoroutine(StartSpawning());
+                if (_isPlayer == true)
+                {
+                    _menu.GetComponent<Menu>().AssignMenu();
+                } //sets internal timer in motion
             }
         }
     }
@@ -36,16 +41,21 @@ public class Spawn : MonoBehaviour
             _prefab = Instantiate(_myPrefab) as GameObject;
             _prefab.transform.position = _spawn.position;
             _prefab.transform.rotation = _spawn.rotation;
-                //Debug.Log("Spawned!" + _myName);
-                if (_isPlayer == true)
-                {
-                    _menu.GetComponent<Menu>().AssignMenu();
-                }
+            //Debug.Log("Spawned!" + _myName);
+            if (_isPlayer == true)
+            {
+                _deathCam.SetActive(false);
+                _menu.GetComponent<Menu>().AssignMenu();
+            }
         }
     }
     IEnumerator StartSpawning()
     {
         _appearing = true;
+        if (_isPlayer == true)
+        {
+            _deathCam.SetActive(true);
+        }
         yield return new WaitForSeconds(_currTimer); //waits for internal time
         if (_appearing == true)
         {

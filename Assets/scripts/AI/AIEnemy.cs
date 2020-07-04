@@ -18,6 +18,8 @@ public class AIEnemy : MonoBehaviour
     [SerializeField] private float _speed = 1f;
     [SerializeField] private bool _inRange = false;
     [SerializeField] private bool _attack = false;
+    [SerializeField] private bool _rotableWeaponry = false;
+    [SerializeField] private Transform _rotableWeapon;
     //[SerializeField] private GameObject _hitZone; // add later
     [SerializeField] private GameObject _thisAI;
     [SerializeField] private float _timeToForget = 15f;
@@ -100,6 +102,10 @@ public class AIEnemy : MonoBehaviour
                     direction.y = _zeroDir;
                     this.transform.rotation = Quaternion.Slerp(this.transform.rotation,
                         Quaternion.LookRotation(direction), _rotSpeed);
+                    if(_rotableWeaponry == true)
+                    {
+                        _rotableWeapon.LookAt(player);
+                    }
                 }
                 else if (_flee == true)
                 {
