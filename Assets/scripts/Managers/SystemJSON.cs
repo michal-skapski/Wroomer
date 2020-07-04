@@ -7,6 +7,7 @@ public class SystemJSON : MonoBehaviour
 {
     private static SystemJSON _instance;
     private int[] _highscore = new int[6];
+    private string[] _bestPlayersNames = new string[6];
     private string _fileName = "/scores.txt";
     private void Awake()
     {
@@ -36,10 +37,22 @@ public class SystemJSON : MonoBehaviour
             Save();
         }
     }
+    public string[] BestPlayers
+    {
+        get
+        {
+            return _bestPlayersNames;
+        }
+        set
+        {
+            _bestPlayersNames = value;
+            //Save();
+        }
+    }
     public void Save()
     {
         // save actually
-        SaveJSON saveObject = new SaveJSON { bestScores = _highscore };
+        SaveJSON saveObject = new SaveJSON { bestScores = _highscore, bestPlayers = _bestPlayersNames };
         string json = JsonUtility.ToJson(saveObject);
         // save to a file
         File.WriteAllText(Application.dataPath + _fileName, json);
@@ -51,6 +64,7 @@ public class SystemJSON : MonoBehaviour
             string loadString = File.ReadAllText(Application.dataPath + _fileName);
             SaveJSON loadedSaveObject = JsonUtility.FromJson<SaveJSON>(loadString);
             _highscore = loadedSaveObject.bestScores;
+            _bestPlayersNames = loadedSaveObject.bestPlayers;
         }
         else
         {

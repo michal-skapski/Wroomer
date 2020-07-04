@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
 using System.IO;
 
+
 // 1. W tym skrypcie pobrać tablice z systemjson na awaku 
 // 2. W tym skrypcie jak gracz skończy grę to sprawdzić czy jego wynik nadaje się do zapisania w tablicy jak tak to podmienić wyniki
 // 3. Gdy tablica jest uporządkowana to dopiero wtedy robię zapis całej tablicy
@@ -22,9 +23,15 @@ public class CalcualateScoreboard : MonoBehaviour
     private string _gameSceneName = "Prototype_01";
     [SerializeField] private SaveName _saveNameScript;
     private int[] _highScore = new int[6];
-
+    private string[] _bestNames = new string[6];
     private int _zeroVal = 0;
-    private int _sixVal = 5;
+    private int _oneVal = 1;
+    private int _twoVal = 2;
+    private int _threeVal = 3;
+    private int _fourVal = 4;
+    private int _fiveVal = 5;
+    private int _sixVal = 6;
+    private string _emptySign = "";
     
     private void CheckingScore()
     {
@@ -38,24 +45,46 @@ public class CalcualateScoreboard : MonoBehaviour
 
         // tu przechwyć aktualny wynik zz player prefs (current score) - done
         // sprawdź czy zapisać wynik do highscore - czy wynik jest wysoki - done 
-        // tak zapisz na odpowiednim miejsu nie zignorować (_highcore)
+        // tak zapisz na odpowiednim miejsu nie zignorować (_highcore) - done
         // later instantiate - done
 
         _highScore = SystemJSON.Instance.Highscore;
+        _bestNames = SystemJSON.Instance.BestPlayers;
 
         for (int i = _zeroVal; i < _sixVal; i++)
         {
             if (PlayerPrefs.GetInt("currentScore") > _highScore[i])
             {
 
-                for (int z = _sixVal; z < i; z--)
+                for (int z = _fiveVal; z >= i; z--)
                 {
                     Debug.Log("test");
                     _highScore[z] = _highScore[z - 1];
                     Debug.Log("z: " + z + " z-1: " + (z - 1));
                 }
                 _highScore[i] = PlayerPrefs.GetInt("currentScore");
-                //break;
+                switch (i)
+                {
+                    case 0:
+                        _bestNames[_zeroVal] = PlayerPrefs.GetString("name");
+                        break;
+                    case 1:
+                        _bestNames[_oneVal] = PlayerPrefs.GetString("name");
+                        break;
+                    case 2:
+                        _bestNames[_twoVal] = PlayerPrefs.GetString("name");
+                        break;
+                    case 3:
+                        _bestNames[_threeVal] = PlayerPrefs.GetString("name");
+                        break;
+                    case 4:
+                        _bestNames[_fourVal] = PlayerPrefs.GetString("name");
+                        break;
+                    case 5:
+                        _bestNames[_fiveVal] = PlayerPrefs.GetString("name");
+                        break;
+                }
+                break;
             }
         }
         SystemJSON.Instance.Highscore = _highScore;
@@ -64,24 +93,28 @@ public class CalcualateScoreboard : MonoBehaviour
     private void PinningUserScore()
     {
         _highScore = SystemJSON.Instance.Highscore;
+        _bestNames = SystemJSON.Instance.BestPlayers;
     }
     private void MatchingScore()
     {
-        for (int i = 0; i < _sixVal; i++)
+        for (int i = 0; i <= _fiveVal; i++)
         {
             if (_highScore[i] != _zeroVal)
             {
                 _posNumber[i].gameObject.SetActive(true);
+                nameBox[i].text = _bestNames[i];
                 scoreAmountBox[i].text = _highScore[i].ToString();
             }
         }
     }
-    public void ResetUserScores() // do it by the json method 
+    public void ResetUserScores() // this method is connect to "slaughter" button - it deletes  all the scores and names
     {
-        for (int i = _zeroVal; i < _sixVal; i++)
+        for (int i = _zeroVal; i <= _fiveVal; i++)
         {
             _highScore[i] = 0;
+            _bestNames[i] = _emptySign;
         }
+        SystemJSON.Instance.Save();
     }
     private void Awake()
     {
@@ -103,27 +136,5 @@ public class CalcualateScoreboard : MonoBehaviour
     private void Update()
     {
         MatchingScore();
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            PlayerPrefs.SetInt("currentScore", 10);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            PlayerPrefs.SetInt("currentScore", 20);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            PlayerPrefs.SetInt("currentScore", 30);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            PlayerPrefs.SetInt("currentScore", 0);
-            for (int i = _sixVal; i < _sixVal; i++)
-            {
-                _highScore[i] = 0;
-            }
-            SystemJSON.Instance.Highscore = _highScore;
-        }
-
     }
 }

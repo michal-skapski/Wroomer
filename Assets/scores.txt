@@ -1,1 +1,1 @@
-{"bestScores":[18,15,15,14,5,0]}
+{"bestScores":[9,5,5,5,4,3],"bestPlayers":["WYNIK 9","Wynik 4","Wynik 5 - v2","wymol 5","kefjfgbw","sdgknsag"]}

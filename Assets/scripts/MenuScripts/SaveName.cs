@@ -30,6 +30,5 @@ public class SaveName : MonoBehaviour
         PlayerPrefs.SetInt("currentScore", userScore);
         _scoreboardScript.SaveArrayScore();
         Debug.Log(PlayerPrefs.GetString("name"));
-        Debug.Log(PlayerPrefs.GetString("userScore"));
     }
 }
