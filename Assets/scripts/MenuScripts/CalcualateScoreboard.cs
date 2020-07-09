@@ -22,8 +22,10 @@ public class CalcualateScoreboard : MonoBehaviour
     [SerializeField] private GameObject _saveNameObjects;
     private string _gameSceneName = "Prototype_01";
     [SerializeField] private SaveName _saveNameScript;
+
     private int[] _highScore = new int[6];
     private string[] _bestNames = new string[6];
+
     private int _zeroVal = 0;
     private int _oneVal = 1;
     private int _twoVal = 2;
@@ -56,34 +58,15 @@ public class CalcualateScoreboard : MonoBehaviour
             if (PlayerPrefs.GetInt("currentScore") > _highScore[i])
             {
 
-                for (int z = _fiveVal; z >= i; z--)
+                for (int z = _fiveVal; z > i; z--)
                 {
                     Debug.Log("test");
                     _highScore[z] = _highScore[z - 1];
+                    _bestNames[z] = _bestNames[z - 1];
                     Debug.Log("z: " + z + " z-1: " + (z - 1));
                 }
+                _bestNames[i] = PlayerPrefs.GetString("name");
                 _highScore[i] = PlayerPrefs.GetInt("currentScore");
-                switch (i)
-                {
-                    case 0:
-                        _bestNames[_zeroVal] = PlayerPrefs.GetString("name");
-                        break;
-                    case 1:
-                        _bestNames[_oneVal] = PlayerPrefs.GetString("name");
-                        break;
-                    case 2:
-                        _bestNames[_twoVal] = PlayerPrefs.GetString("name");
-                        break;
-                    case 3:
-                        _bestNames[_threeVal] = PlayerPrefs.GetString("name");
-                        break;
-                    case 4:
-                        _bestNames[_fourVal] = PlayerPrefs.GetString("name");
-                        break;
-                    case 5:
-                        _bestNames[_fiveVal] = PlayerPrefs.GetString("name");
-                        break;
-                }
                 break;
             }
         }
