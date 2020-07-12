@@ -28,7 +28,7 @@ public class HeavenSend : MonoBehaviour
             DieInnocentOne();
             //Debug.Log("HehsPro");
         }
-        else if (other.GetComponent<HP>())
+        else if (other.GetComponent<Car>())
         {
             DieInnocentOne();
             //Debug.Log("HehsCarzie");

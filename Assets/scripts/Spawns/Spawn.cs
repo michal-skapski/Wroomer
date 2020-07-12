@@ -14,10 +14,13 @@ public class Spawn : MonoBehaviour
     [SerializeField] private bool _isPlayer = false;
     [SerializeField] private GameObject _menu;
     [SerializeField] private GameObject _deathCam;
+    [SerializeField] private bool _changeable = false;
+    [SerializeField] private List<Transform> _changeableLocations;
+    private int _spawnLoc;
 
     private void Start()
     {
-        Spawning(); // sets off first batch of spawn and whole script in motion
+        Spawning(_spawnLoc); // sets off first batch of spawn and whole script in motion
     }
     private void Update()
     {
@@ -33,14 +36,22 @@ public class Spawn : MonoBehaviour
             }
         }
     }
-    void Spawning()
+    void Spawning(int pos)
     {
         if (_prefab == null)
         {
             _currTimer = _respawnTimer; //resets time
             _prefab = Instantiate(_myPrefab) as GameObject;
-            _prefab.transform.position = _spawn.position;
-            _prefab.transform.rotation = _spawn.rotation;
+            if (_changeable == false)
+            {
+                _prefab.transform.position = _spawn.position;
+                _prefab.transform.rotation = _spawn.rotation;
+            }
+            else if (_changeable == true)
+            {
+                _prefab.transform.position = _changeableLocations[pos].position;
+                _prefab.transform.rotation = _changeableLocations[pos].rotation;
+            }
             //Debug.Log("Spawned!" + _myName);
             if (_isPlayer == true)
             {
@@ -60,7 +71,8 @@ public class Spawn : MonoBehaviour
         if (_appearing == true)
         {
             _appearing = false;
-            Spawning();
+            _spawnLoc = Random.Range(0, _changeableLocations.Count);
+            Spawning(_spawnLoc);
         }
     }
 }

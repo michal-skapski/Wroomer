@@ -56,9 +56,9 @@ public class AltCarMove : MonoBehaviour
     {
         if (SystemInfo.deviceType == DeviceType.Desktop)
         {
-            _joystickControlled = false;
+           _joystickControlled = false;
         }
-        else if (SystemInfo.deviceType == DeviceType.Handheld)
+       else if (SystemInfo.deviceType == DeviceType.Handheld)
         {
             _joystickControlled = true;
         }

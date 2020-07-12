@@ -29,6 +29,7 @@ public class Menu : MonoBehaviour
     [SerializeField] private GameObject _sndWaveText;
     [SerializeField] private GameObject _trdWaveText;
     [SerializeField] private bool _inArena = false;
+    [SerializeField] private List <GameObject> _screens;
     //menuScenes
     private string _menuScene = "Menu";
     private string _gameScene = "Prototype_01";
@@ -52,6 +53,12 @@ public class Menu : MonoBehaviour
     {
         AltCarMove.menuManager = _thisMenu;
         AltCarMove.otherObject = _compass;
+    }
+    public void OpenScene(int num)
+    {
+        foreach (var obj in _screens)
+            obj.SetActive(false);
+        _screens[num].SetActive(true);
     }
     public void AddScore(int points)
     {
@@ -86,6 +93,7 @@ public class Menu : MonoBehaviour
         AssignMenu();
         if (_inArena == true)
         {
+            Application.targetFrameRate = 60;
             _score = _zeroVal;
             score = _score;
             _thisStaticMenu = _thisMenu;
