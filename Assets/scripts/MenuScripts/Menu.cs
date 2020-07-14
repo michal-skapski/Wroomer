@@ -38,7 +38,7 @@ public class Menu : MonoBehaviour
     //add listener onclick
     public void GoToMenu()
     {
-        PlayerPrefs.SetString("scene", SceneManager.GetActiveScene().name);
+        //PlayerPrefs.SetString("scene", SceneManager.GetActiveScene().name);
         SceneManager.LoadScene("Menu");
     }
     public void PlayGame()
@@ -84,15 +84,16 @@ public class Menu : MonoBehaviour
         yield return new WaitForSeconds(_timer);
         GoToMenu();
     }
-    private void Awake()
+    private void OnApplicationQuit()
     {
-        PlayerPrefs.SetString("scene", SceneManager.GetActiveScene().name); // this player prefs help us transfering our scenes
+        PlayerPrefs.SetString("scene", _menuScene);
     }
     private void Start()
     {
         AssignMenu();
         if (_inArena == true)
         {
+            PlayerPrefs.SetString("scene", SceneManager.GetActiveScene().name); // this player prefs help us transfering our scenes
             Application.targetFrameRate = 60;
             _score = _zeroVal;
             score = _score;
@@ -104,6 +105,7 @@ public class Menu : MonoBehaviour
             anim = _clockTimer.GetComponent<Animator>();
             _3rdanim = _trdWaveText.GetComponent<Animator>();
             _2ndanim = _sndWaveText.GetComponent<Animator>();
+            
         }
     }
     void Update()

@@ -8,10 +8,6 @@ using UnityEngine.SocialPlatforms.Impl;
 using System.IO;
 
 
-// 1. W tym skrypcie pobrać tablice z systemjson na awaku 
-// 2. W tym skrypcie jak gracz skończy grę to sprawdzić czy jego wynik nadaje się do zapisania w tablicy jak tak to podmienić wyniki
-// 3. Gdy tablica jest uporządkowana to dopiero wtedy robię zapis całej tablicy
-// 4. Najpierw tylko punkty potem imiona  (też jsonem)
 public class CalcualateScoreboard : MonoBehaviour
 {
     [SerializeField] public TMP_Text[] nameBox;
@@ -27,21 +23,10 @@ public class CalcualateScoreboard : MonoBehaviour
     private string[] _bestNames = new string[6];
 
     private int _zeroVal = 0;
-    private int _oneVal = 1;
-    private int _twoVal = 2;
-    private int _threeVal = 3;
-    private int _fourVal = 4;
     private int _fiveVal = 5;
     private int _sixVal = 6;
     private string _emptySign = "";
     
-    private void CheckingScore()
-    {
-        PinningUserScore();
-    }
-    
-
-
     public void SaveArrayScore()
     {
 
@@ -60,10 +45,8 @@ public class CalcualateScoreboard : MonoBehaviour
 
                 for (int z = _fiveVal; z > i; z--)
                 {
-                    Debug.Log("test");
                     _highScore[z] = _highScore[z - 1];
                     _bestNames[z] = _bestNames[z - 1];
-                    Debug.Log("z: " + z + " z-1: " + (z - 1));
                 }
                 _bestNames[i] = PlayerPrefs.GetString("name");
                 _highScore[i] = PlayerPrefs.GetInt("currentScore");
@@ -114,7 +97,7 @@ public class CalcualateScoreboard : MonoBehaviour
     }
     void Start()
     {
-        CheckingScore();
+        PinningUserScore();
     }
     private void Update()
     {
